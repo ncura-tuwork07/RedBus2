@@ -279,23 +279,28 @@ const DEMO_ORGS: SeedOrgConfig[] = [
 ];
 
 async function main() {
-  // Red Bus: la organización real, con el volumen de datos de siempre.
-  await seedOrganization({
-    slug: "redbus",
-    name: "Redbus School of English",
-    emailDomain: "redbusschool.com",
-    ownerName: "Nazareno Cura",
-    ownerPassword: process.env.SEED_ADMIN_PASSWORD ?? "cambiar123",
-    teacherNames: [
-      "Marina Sosa",
-      "Lucas Fernández",
-      "Camila Torres",
-      "Ezequiel Romero",
-      "Julieta Acosta",
-      "Nicolás Herrera",
-    ],
-    studentCount: 100,
-  });
+  // SEED_SKIP_REDBUS=1: para producción, donde Red Bus ya tiene sus propios datos reales
+  // backfilleados (ver prisma/scripts/backfill-organization.ts) — correr este bloque ahí
+  // duplicaría alumnos de prueba encima de los que ya existen.
+  if (process.env.SEED_SKIP_REDBUS !== "1") {
+    // Red Bus: la organización real, con el volumen de datos de siempre.
+    await seedOrganization({
+      slug: "redbus",
+      name: "Redbus School of English",
+      emailDomain: "redbusschool.com",
+      ownerName: "Nazareno Cura",
+      ownerPassword: process.env.SEED_ADMIN_PASSWORD ?? "cambiar123",
+      teacherNames: [
+        "Marina Sosa",
+        "Lucas Fernández",
+        "Camila Torres",
+        "Ezequiel Romero",
+        "Julieta Acosta",
+        "Nicolás Herrera",
+      ],
+      studentCount: 100,
+    });
+  }
 
   for (const org of DEMO_ORGS) {
     await seedOrganization(org);
