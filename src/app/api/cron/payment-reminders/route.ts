@@ -32,7 +32,7 @@ export async function GET(req: Request) {
 
   let sent = 0;
   for (const payment of overdue) {
-    const message = `Hola ${payment.student.user.name}! Te recordamos que la cuota de ${payment.period} ($${payment.amount}) está vencida en Redbus School of English. Cualquier consulta, respondé este mensaje.`;
+    const message = `Hola ${payment.student.user.name}! Te recordamos que la cuota de ${payment.period} ($${payment.amount}) está vencida en Red Bus School of English. Cualquier consulta, respondé este mensaje.`;
 
     // el mismo aviso va al alumno y a sus contactos de emergencia (padre/madre/tutor) —
     // reusa el teléfono que ya cargó el directivo, sin necesidad de un portal aparte.

@@ -1,29 +1,41 @@
 import type { Metadata, Viewport } from "next";
-import { Work_Sans, Newsreader } from "next/font/google";
+import { Quicksand, Unbounded } from "next/font/google";
 import "./globals.css";
 import { SwRegister } from "@/components/sw-register";
+import { BRAND } from "@/lib/brand";
 
-const workSans = Work_Sans({
-  variable: "--font-work-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+const quicksand = Quicksand({
+  variable: "--font-quicksand",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
+});
+
+const unbounded = Unbounded({
+  variable: "--font-unbounded",
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Redbus School of English",
-  description: "Plataforma de gestión del instituto Redbus School of English",
+  metadataBase: new URL(BRAND.siteUrl),
+  title: {
+    default: `${BRAND.name} · Escuela de inglés en ${BRAND.city}`,
+    template: `%s · ${BRAND.name}`,
+  },
+  description:
+    "Escuela de inglés en José C. Paz con cursos anuales para chicos, adolescentes y adultos, y clases de apoyo escolar. Certificación del Instituto Superior Cultural Británico.",
   manifest: "/manifest.json",
+  openGraph: {
+    title: BRAND.name,
+    description: "Aprendé inglés con confianza. Cursos anuales 2027 y clases de apoyo en José C. Paz.",
+    locale: "es_AR",
+    type: "website",
+    images: [{ url: "/brand/isologo.png", width: 1024, height: 1024, alt: BRAND.name }],
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#c8102e",
+  themeColor: "#3e356a",
 };
 
 export default function RootLayout({
@@ -32,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${workSans.variable} ${newsreader.variable} h-full antialiased`}>
+    <html lang="es" className={`${quicksand.variable} ${unbounded.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <SwRegister />
         {children}

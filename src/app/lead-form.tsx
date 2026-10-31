@@ -7,11 +7,11 @@ import { Input, Label } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 
 const INTERESES = [
-  "Kids (6-10 años)",
-  "Teens (11-15)",
-  "Adultos Principiantes",
-  "Intermedio",
-  "Avanzado / Conversación",
+  "Kinder",
+  "Grados (primaria)",
+  "Adolescentes (secundaria)",
+  "Intensivo para adultos",
+  "Clases de apoyo escolar",
   "Todavía no sé, quiero que me asesoren",
 ];
 
@@ -45,7 +45,7 @@ export function LeadForm() {
   if (sent) {
     return (
       <Card className="rounded-[18px] border-accent-500 text-center">
-        <p className="font-serif text-lg font-semibold text-accent-500">¡Gracias! ✓</p>
+        <p className="font-display text-lg font-semibold text-accent-500">¡Gracias! ✓</p>
         <p className="mt-1 text-sm text-neutral-700">Te vamos a contactar a la brevedad.</p>
       </Card>
     );

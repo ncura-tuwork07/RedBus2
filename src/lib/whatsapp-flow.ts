@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { BRAND } from "@/lib/brand";
 
 const OPT_OUT_KEYWORDS = ["stop red bus", "stop redbus", "stop"];
 const OPT_IN_KEYWORDS = ["activar red bus", "activar redbus", "reactivar red bus"];
@@ -10,7 +11,7 @@ function normalize(text: string) {
 type FlowData = { paraQuien?: string; nivel?: string; turno?: string };
 
 const BIENVENIDA =
-  "¡Hola! 👋 Bienvenido/a a *Redbus School of English* 🚌📚 Instituto de inglés en José C. Paz. " +
+  "¡Hola! 👋 Bienvenido/a a *Red Bus School of English* 🚌📚 Escuela de inglés en José C. Paz. " +
   "Este es un chat de prueba para ver cómo se va a sentir la atención automática — ¡ya casi arrancamos de verdad!";
 
 const PREGUNTA_PARA_QUIEN = "¿Sos vos quien está interesado/a en las clases, o preguntás para un hijo/a?";
@@ -19,7 +20,7 @@ const PREGUNTA_NIVEL =
 const PREGUNTA_TURNO = "Genial, ¡gracias! Con esa info te podemos armar la comisión que mejor te quede. ¿Preferís clases de mañana, tarde o noche?";
 const CIERRE =
   "Perfecto ✅ Ya tenemos lo básico. En breve alguien del equipo de admisiones te escribe para coordinar una entrevista rápida o prueba de nivel. " +
-  "Mientras tanto, conocé más del instituto acá: https://red-bus-school.vercel.app 🚌";
+  `Mientras tanto, conocé más de la escuela acá: ${BRAND.siteUrl} 🚌`;
 
 /**
  * Procesa un mensaje entrante de un número ya habilitado (allowlist verificada

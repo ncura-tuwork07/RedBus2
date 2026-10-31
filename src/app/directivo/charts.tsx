@@ -14,35 +14,35 @@ import {
   CartesianGrid,
 } from "recharts";
 
-const tickStyle = { fontSize: 12, fontFamily: "var(--font-sans)", fill: "#6b6555" };
+const tickStyle = { fontSize: 12, fontFamily: "var(--font-sans)", fill: "#5a5282" };
 const tooltipContentStyle = {
   fontFamily: "var(--font-sans)",
   fontSize: 13,
   borderRadius: 10,
-  border: "1px solid #e4dcc8",
-  boxShadow: "0 8px 20px -6px rgb(27 42 86 / 0.18)",
+  border: "1px solid #e9e2dd",
+  boxShadow: "0 8px 20px -6px rgb(62 53 106 / 0.2)",
 };
-const tooltipLabelStyle = { fontFamily: "var(--font-serif)", fontWeight: 600, color: "#171717" };
-const legendStyle = { fontFamily: "var(--font-sans)", fontSize: 13, color: "#4b4638" };
+const tooltipLabelStyle = { fontFamily: "var(--font-sans)", fontWeight: 700, color: "#2b2450" };
+const legendStyle = { fontFamily: "var(--font-sans)", fontSize: 13, color: "#473f73" };
 
 export function AlumnosPorNivelChart({ data }: { data: { level: string; alumnos: number }[] }) {
   return (
     <ResponsiveContainer width="100%" height={260}>
       <BarChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e4dcc8" />
+        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e9e2dd" />
         <XAxis dataKey="level" tick={tickStyle} />
         <YAxis allowDecimals={false} tick={tickStyle} />
-        <Tooltip contentStyle={tooltipContentStyle} labelStyle={tooltipLabelStyle} cursor={{ fill: "#f5f3ee" }} />
-        <Bar dataKey="alumnos" name="Alumnos" fill="#1B2A56" radius={[4, 4, 0, 0]} />
+        <Tooltip contentStyle={tooltipContentStyle} labelStyle={tooltipLabelStyle} cursor={{ fill: "#f6f2ef" }} />
+        <Bar dataKey="alumnos" name="Alumnos" fill="#3E356A" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
 }
 
 const PAGO_COLORS: Record<string, string> = {
-  PAGADO: "#1B2A56",
-  PENDIENTE: "#C98A2E",
-  VENCIDO: "#C8102E",
+  PAGADO: "#0098B2",
+  PENDIENTE: "#B9770E",
+  VENCIDO: "#BD3138",
 };
 
 const PAGO_LABELS: Record<string, string> = {
@@ -66,7 +66,7 @@ export function EstadoPagosChart({ data }: { data: { status: string; cantidad: n
           label={(entry) => (entry.payload as { label: string }).label}
         >
           {labeled.map((entry) => (
-            <Cell key={entry.status} fill={PAGO_COLORS[entry.status] ?? "#a3a3a3"} />
+            <Cell key={entry.status} fill={PAGO_COLORS[entry.status] ?? "#b3a9a4"} />
           ))}
         </Pie>
       </PieChart>
@@ -84,14 +84,14 @@ export function PagosHistoricoChart({
   return (
     <ResponsiveContainer width="100%" height={280}>
       <BarChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e4dcc8" />
+        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e9e2dd" />
         <XAxis dataKey="period" tick={tickStyle} />
         <YAxis tick={tickStyle} tickFormatter={(v) => currencyFmt.format(v)} width={90} />
         <Tooltip
           contentStyle={tooltipContentStyle}
           labelStyle={tooltipLabelStyle}
           formatter={(value) => currencyFmt.format(Number(value))}
-          cursor={{ fill: "#f5f3ee" }}
+          cursor={{ fill: "#f6f2ef" }}
         />
         <Legend wrapperStyle={legendStyle} />
         <Bar dataKey="pagado" stackId="a" fill={PAGO_COLORS.PAGADO} name="Pagado" />

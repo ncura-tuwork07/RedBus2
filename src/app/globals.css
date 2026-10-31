@@ -1,41 +1,57 @@
 @import "tailwindcss";
 
+/* Paleta y tipografías: Manual de marca Red Bus School of English v1.0 */
 @theme {
-  --font-sans: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-sans: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-unbounded), var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
 
-  /* Primario (rojo institucional) */
-  --color-primary-50: #fbeae9;
-  --color-primary-100: #f6d0ce;
-  --color-primary-200: #eea19d;
-  --color-primary-300: #e0716c;
-  --color-primary-400: #d43e3a;
-  --color-primary-500: #c8102e;
-  --color-primary-600: #a30e27;
-  --color-primary-700: #7d0b1f;
-  --color-primary-800: #570815;
-  --color-primary-900: #3a050e;
+  /* Rojo Red Bus #BD3138 — protagonista: botones, estrellas, acentos */
+  --color-primary-50: #f8eaeb;
+  --color-primary-100: #f2d6d7;
+  --color-primary-200: #e5adaf;
+  --color-primary-300: #d78388;
+  --color-primary-400: #ca5a60;
+  --color-primary-500: #bd3138;
+  --color-primary-600: #9d272e;
+  --color-primary-700: #7a1f24;
+  --color-primary-800: #57161a;
+  --color-primary-900: #350d10;
 
-  /* Acento (azul marino) */
-  --color-accent-50: #edeff6;
-  --color-accent-100: #c7cde0;
-  --color-accent-300: #5c6ea3;
-  --color-accent-500: #1b2a56;
-  --color-accent-600: #14203f;
-  --color-accent-700: #0f172f;
+  /* Azul noche #3E356A — base: fondos oscuros, textos, aro del isologo */
+  --color-accent-50: #ecebf0;
+  --color-accent-100: #d8d7e1;
+  --color-accent-200: #b2aec3;
+  --color-accent-300: #8b86a6;
+  --color-accent-400: #655d88;
+  --color-accent-500: #3e356a;
+  --color-accent-600: #322b57;
+  --color-accent-700: #272145;
 
-  /* Neutrales (crema/taupe) */
+  /* Turquesa #0098B2 — acento frío: etiquetas, respuestas correctas */
+  --color-turquesa-50: #e6f5f7;
+  --color-turquesa-100: #cceaf0;
+  --color-turquesa-200: #99d6e0;
+  --color-turquesa-500: #0098b2;
+  --color-turquesa-600: #007f95;
+  --color-turquesa-700: #006b7e;
+
+  /* Celeste #C2DDFF — fondo suave, ventanas del colectivo */
+  --color-celeste-50: #f3f8ff;
+  --color-celeste-100: #e7f1ff;
+  --color-celeste-200: #c2ddff;
+
+  /* Neutrales: blanco, fondo cálido #F6F2EF y escala de azul noche para los textos */
   --color-neutral-0: #ffffff;
-  --color-neutral-50: #fbf7ef;
-  --color-neutral-100: #f5f3ee;
-  --color-neutral-200: #e4dcc8;
-  --color-neutral-300: #d8cfb8;
-  --color-neutral-400: #b4ac98;
-  --color-neutral-500: #756e5e; /* oscurecido: el valor anterior (#9a9384) daba 3.05:1 sobre blanco, bajo el 4.5:1 de WCAG AA */
-  --color-neutral-600: #6b6555;
-  --color-neutral-700: #4b4638;
-  --color-neutral-800: #1b1b1e;
-  --color-neutral-900: #171717;
+  --color-neutral-50: #fbf9f8;
+  --color-neutral-100: #f6f2ef;
+  --color-neutral-200: #e9e2dd;
+  --color-neutral-300: #d9d0c9;
+  --color-neutral-400: #b3a9a4;
+  --color-neutral-500: #6a6290; /* 5.8:1 sobre blanco */
+  --color-neutral-600: #5a5282;
+  --color-neutral-700: #473f73;
+  --color-neutral-800: #3e356a;
+  --color-neutral-900: #2b2450;
 
   /* Semánticos */
   --color-success-50: #eaf6ef;
@@ -46,16 +62,12 @@
   --color-warning-500: #b9770e;
   --color-warning-700: #8f5c0b;
 
-  --color-danger-50: #fbeae9;
-  --color-danger-500: #c8102e;
-  --color-danger-700: #a30e27;
+  --color-danger-50: #f8eaeb;
+  --color-danger-500: #bd3138;
+  --color-danger-700: #9d272e;
 
-  --color-info-50: #edeff6;
-  --color-info-500: #1b2a56;
-
-  /* Dorado decorativo (stat de aulas, segmento de gráficos) — no es un color de estado */
-  --color-gold-50: #f6eedd;
-  --color-gold-500: #c98a2e;
+  --color-info-50: #ecebf0;
+  --color-info-500: #3e356a;
 
   /* Tipografía */
   --text-xs: 12px;
@@ -66,16 +78,16 @@
   --text-2xl: 28px;
   --text-3xl: 36px;
 
-  /* Radios */
-  --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
+  /* Radios: el manual pide esquinas siempre redondeadas */
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 
-  /* Sombras */
-  --shadow-sm: 0 1px 2px 0 rgb(27 42 86 / 0.06);
-  --shadow-md: 0 8px 20px -6px rgb(27 42 86 / 0.18);
-  --shadow-lg: 0 20px 40px -12px rgb(27 42 86 / 0.25);
+  /* Sombras (azul noche) */
+  --shadow-sm: 0 1px 2px 0 rgb(62 53 106 / 0.07);
+  --shadow-md: 0 8px 20px -6px rgb(62 53 106 / 0.2);
+  --shadow-lg: 0 20px 40px -12px rgb(62 53 106 / 0.3);
 }
 
 body {
@@ -85,8 +97,29 @@ body {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  line-height: 1.2;
+/* En la capa base para que las clases de Tailwind (font-extrabold, etc.) puedan pisarlo */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+}
+
+/* Titulares de marca (Unbounded): la familia la aporta la utilidad font-display; acá solo el ajuste de espaciado */
+@layer components {
+  .font-display {
+    letter-spacing: -0.01em;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

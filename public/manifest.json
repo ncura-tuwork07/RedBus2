@@ -1,13 +1,13 @@
 {
-  "name": "Redbus School of English",
-  "short_name": "Redbus School",
-  "description": "Plataforma de gestión de Redbus School of English",
+  "name": "Red Bus School of English",
+  "short_name": "Red Bus School",
+  "description": "Portal de Red Bus School of English: aulas, tareas, pagos y seguimiento.",
   "start_url": "/login",
   "display": "standalone",
-  "background_color": "#fbf7ef",
-  "theme_color": "#c8102e",
+  "background_color": "#f6f2ef",
+  "theme_color": "#3e356a",
   "icons": [
-    { "src": "/brand/logo-256.png", "sizes": "256x256", "type": "image/png" },
-    { "src": "/brand/logo.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }

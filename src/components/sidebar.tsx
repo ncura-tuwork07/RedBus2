@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import { BrandMark } from "@/components/brand-mark";
 import { usePathname } from "next/navigation";
 import { GraduationCap, BookOpen, LayoutDashboard, BarChart3, Camera, Users, School, UserPlus, Wallet, Receipt, LucideIcon } from "lucide-react";
 
@@ -40,13 +40,13 @@ export function Sidebar({ roles, onNavigate }: { roles: Role[]; onNavigate?: () 
 
   return (
     <div className="flex h-full w-[232px] flex-col gap-1 bg-accent-600 p-3.5">
-      <div className="flex items-center gap-2 px-2.5 pb-5 pt-1.5">
-        <Image src="/brand/logo-256.png" alt="Redbus School of English" width={36} height={36} className="h-9 w-9 shrink-0 rounded-full" />
-        <span className="truncate font-serif text-base font-bold text-white">Redbus School</span>
+      <div className="px-2.5 pb-5 pt-1.5">
+        <BrandMark tone="light" size={38} />
       </div>
       <nav className="flex flex-1 flex-col gap-1">
         {items.map((item) => {
-          const active = pathname.startsWith(item.href);
+          // "/directivo" es la raíz de todas las pantallas de dirección: solo cuenta como activa en su propia página
+          const active = item.href === "/directivo" ? pathname === item.href : pathname.startsWith(item.href);
           return (
             <Link key={item.href} href={item.href} onClick={onNavigate} className={navLinkClass(active)}>
               <item.icon className="h-4 w-4" />

@@ -46,6 +46,6 @@ export async function sendWelcomeWhatsApp(name: string, email: string, phone: st
   const loginUrl = process.env.NEXTAUTH_URL ? `${process.env.NEXTAUTH_URL}/recuperar` : "https://red-bus-school.vercel.app/recuperar";
   await sendWhatsAppText(
     normalizePhone(phone),
-    `¡Hola ${name}! Ya podés entrar a Redbus School of English. Andá a ${loginUrl} y con tu email (${email}), DNI y teléfono vas a poder elegir tu contraseña.`,
+    `¡Hola ${name}! Ya podés entrar a Red Bus School of English. Andá a ${loginUrl} y con tu email (${email}), DNI y teléfono vas a poder elegir tu contraseña.`,
   );
 }

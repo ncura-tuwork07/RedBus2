@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { LinkButton } from "@/components/ui/link-button";
+import { BrandMark } from "@/components/brand-mark";
 import { Input, Label } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { SubmitButton } from "@/components/ui/submit-button";
@@ -32,13 +33,10 @@ export default async function LoginPage({
   const { error } = await searchParams;
 
   return (
-    <div className="flex min-h-screen flex-col bg-neutral-50">
+    <div className="flex min-h-screen flex-col bg-neutral-100">
       <header className="flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/brand/logo-256.png" alt="Redbus School" width={44} height={44} className="h-11 w-11 rounded-full" />
-          <span className="font-serif text-[19px] font-bold text-neutral-800">
-            Redbus <span className="text-primary-500">School</span>
-          </span>
+        <Link href="/" aria-label="Red Bus School of English, inicio">
+          <BrandMark size={44} />
         </Link>
         <LinkButton href="/" variant="secondary">
           ← Volver al sitio
@@ -46,11 +44,17 @@ export default async function LoginPage({
       </header>
 
       <div className="flex flex-1 items-center justify-center px-4 py-10">
-        <div className="w-full max-w-sm rounded-[20px] bg-white p-8 shadow-lg">
-          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary-50">
-            <Image src="/brand/logo-256.png" alt="Redbus School" width={64} height={64} className="h-16 w-16" />
-          </div>
-          <h2 className="mt-4 text-center text-xl font-semibold text-neutral-800">Ingresá a tu cuenta</h2>
+        <div className="w-full max-w-sm rounded-[24px] bg-white p-8 shadow-lg">
+          <Image
+            src="/brand/isologo.png"
+            alt="Red Bus School of English"
+            width={128}
+            height={128}
+            priority
+            className="mx-auto h-32 w-32"
+          />
+          <h2 className="font-display mt-5 text-center text-xl font-extrabold text-accent-500">Ingresá a tu cuenta</h2>
+          <p className="mt-1 text-center text-sm text-neutral-600">Portal de alumnos, docentes y dirección.</p>
 
           {error && (
             <div role="alert" className="mt-4 rounded-lg bg-danger-50 px-3.5 py-2.5 text-sm text-danger-700">

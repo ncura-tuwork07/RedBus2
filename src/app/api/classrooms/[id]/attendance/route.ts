@@ -83,7 +83,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       for (const contact of e.student.contacts) {
         sendWhatsAppText(
           normalizePhone(contact.phone),
-          `Hola! Te avisamos que ${e.student.user.name} estuvo ausente hoy en Redbus School of English.`,
+          `Hola! Te avisamos que ${e.student.user.name} estuvo ausente hoy en Red Bus School of English.`,
         ).catch((err) => console.error("No se pudo avisar ausencia por WhatsApp", err));
       }
     }

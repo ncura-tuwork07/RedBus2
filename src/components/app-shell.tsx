@@ -62,7 +62,7 @@ export function AppShell({
             >
               <Menu className="h-5 w-5" />
             </button>
-            <h1 className="text-xl font-semibold text-neutral-900">{title}</h1>
+            <h1 className="font-display text-base font-extrabold text-accent-500 sm:text-lg">{title}</h1>
           </div>
 
           <div className="relative">

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { BrandMark } from "@/components/brand-mark";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { LinkButton } from "@/components/ui/link-button";
@@ -40,13 +40,10 @@ export default function RecuperarPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-neutral-50">
+    <div className="flex min-h-screen flex-col bg-neutral-100">
       <header className="flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/brand/logo-256.png" alt="Redbus School" width={44} height={44} className="h-11 w-11 rounded-full" />
-          <span className="font-serif text-[19px] font-bold text-neutral-800">
-            Redbus <span className="text-primary-500">School</span>
-          </span>
+        <Link href="/" aria-label="Red Bus School of English, inicio">
+          <BrandMark size={44} />
         </Link>
         <LinkButton href="/login" variant="secondary">
           ← Volver a ingresar
@@ -54,8 +51,8 @@ export default function RecuperarPage() {
       </header>
 
       <div className="flex flex-1 items-center justify-center px-4 py-10">
-        <div className="w-full max-w-sm rounded-[20px] bg-white p-8 shadow-lg">
-          <h2 className="text-center text-xl font-semibold text-neutral-800">Activar cuenta / recuperar acceso</h2>
+        <div className="w-full max-w-sm rounded-[24px] bg-white p-8 shadow-lg">
+          <h2 className="font-display text-center text-lg font-extrabold text-accent-500">Activar cuenta / recuperar acceso</h2>
           <p className="mt-1 text-center text-sm text-neutral-500">
             Ingresá los datos con los que te dieron de alta en el instituto y elegí tu contraseña.
           </p>
