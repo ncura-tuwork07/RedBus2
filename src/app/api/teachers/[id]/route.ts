@@ -60,7 +60,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     where: { id },
     select: { organizationId: true, organization: { select: { name: true } } },
   });
-  if (!assertSameOrg(existing?.organizationId, organizationId)) {
+  if (!existing || !assertSameOrg(existing.organizationId, organizationId)) {
     return NextResponse.json({ error: "No encontrado" }, { status: 404 });
   }
 

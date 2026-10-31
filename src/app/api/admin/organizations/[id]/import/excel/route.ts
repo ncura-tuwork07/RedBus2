@@ -39,7 +39,9 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   const buffer = Buffer.from(await file.arrayBuffer());
   const workbook = XLSX.read(buffer, { type: "buffer" });
   const sheet = workbook.Sheets[workbook.SheetNames[0]];
-  const raw = XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, { header: 1, defval: "" }) as unknown[][];
+  // header: 1 hace que sheet_to_json devuelva filas como arrays (no objetos por columna) —
+  // el tipo genérico tiene que reflejar eso, así que no sirve pedirle Record<string, unknown>.
+  const raw = XLSX.utils.sheet_to_json<unknown[]>(sheet, { header: 1, defval: "" });
 
   if (raw.length < 2) {
     return NextResponse.json({ error: "El archivo no tiene filas de datos" }, { status: 400 });
