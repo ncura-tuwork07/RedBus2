@@ -52,8 +52,24 @@ model User {
 
   studentProfile StudentProfile?
   teacherProfile TeacherProfile?
+  passwordResetTokens PasswordResetToken[]
 
   @@map("users")
+}
+
+// Enlace de un solo uso para restablecer la contraseña por email. Se guarda solo el hash del token:
+// quien lea la base no puede armar un enlace válido.
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+  @@map("password_reset_tokens")
 }
 
 // Contador simple de intentos fallidos (login, activar cuenta) por clave (ej. "login:mail@x.com").

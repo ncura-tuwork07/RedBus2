@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { BRAND } from "@/lib/brand";
 import { sendWhatsAppText } from "@/lib/openwa";
 import { normalizePhone } from "@/lib/phone";
 import { checkRateLimit, clearRateLimit } from "@/lib/rate-limit";
@@ -43,7 +44,7 @@ export async function activateOrResetPassword(email: string, dni: string, phone:
 }
 
 export async function sendWelcomeWhatsApp(name: string, email: string, phone: string) {
-  const loginUrl = process.env.NEXTAUTH_URL ? `${process.env.NEXTAUTH_URL}/recuperar` : "https://red-bus-school.vercel.app/recuperar";
+  const loginUrl = `${process.env.NEXTAUTH_URL ?? BRAND.siteUrl}/recuperar`;
   await sendWhatsAppText(
     normalizePhone(phone),
     `¡Hola ${name}! Ya podés entrar a Red Bus School of English. Andá a ${loginUrl} y con tu email (${email}), DNI y teléfono vas a poder elegir tu contraseña.`,

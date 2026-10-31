@@ -16,7 +16,7 @@ function defaultHome(roles: Role[]) {
   return roleHome[preferred ?? roles[0]];
 }
 
-const publicPaths = ["/", "/login", "/recuperar"];
+const publicPaths = ["/", "/login", "/recuperar", "/olvide", "/restablecer"];
 
 export default auth((req) => {
   const { pathname } = req.nextUrl;

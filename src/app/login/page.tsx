@@ -70,7 +70,7 @@ export default async function LoginPage({
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <Label htmlFor="password">Contraseña</Label>
-                <Link href="/recuperar" className="text-xs font-medium text-primary-500 hover:underline">
+                <Link href="/olvide" className="text-xs font-bold text-primary-500 hover:underline">
                   ¿Olvidaste tu contraseña?
                 </Link>
               </div>
