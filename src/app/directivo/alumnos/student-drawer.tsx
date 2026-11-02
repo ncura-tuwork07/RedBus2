@@ -1,5 +1,7 @@
 "use client";
 
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import { genericMessage } from "@/lib/whatsapp-templates";
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { Drawer, DrawerSection, DrawerField } from "@/components/ui/drawer";
@@ -158,7 +160,17 @@ export function StudentDrawer({ studentId, onClose }: { studentId: string; onClo
               value={student.birthDate ? new Date(student.birthDate).toLocaleDateString("es-AR") : undefined}
             />
             <DrawerField label="Dirección" value={student.address} />
-            <DrawerField label="Teléfono" value={student.phone} />
+            <DrawerField
+              label="Teléfono"
+              value={
+                student.phone ? (
+                  <span className="inline-flex items-center gap-2">
+                    {student.phone}
+                    <WhatsAppButton phone={student.phone} text={genericMessage(student.user.name)} label={`Escribir por WhatsApp a ${student.user.name}`} />
+                  </span>
+                ) : undefined
+              }
+            />
             <DrawerField label="Email" value={student.user.email} />
             <div className="mt-3 flex items-center justify-between rounded-lg border border-neutral-200 p-3">
               <div>
@@ -426,7 +438,10 @@ function EmergencyContactCard({ contact, onDelete }: { contact: Contact; onDelet
         </div>
       </div>
       <div className="mt-1 flex flex-wrap gap-x-4 text-xs text-neutral-500">
-        <span>{contact.phone}</span>
+        <span className="inline-flex items-center gap-2">
+          {contact.phone}
+          <WhatsAppButton phone={contact.phone} text={genericMessage(contact.name)} label={`Escribir por WhatsApp a ${contact.name} (${contact.relationship})`} />
+        </span>
         {contact.email && <span>{contact.email}</span>}
       </div>
     </div>

@@ -35,7 +35,7 @@ export function LandingNav() {
           <LinkButton href="/login" variant="secondary">
             Ingresar al portal
           </LinkButton>
-          <LinkButton href="#contacto" variant="primary">
+          <LinkButton href="/admisiones" variant="primary">
             Inscribirme
           </LinkButton>
         </div>
@@ -63,7 +63,7 @@ export function LandingNav() {
             <LinkButton href="/login" variant="secondary" className="w-full">
               Ingresar al portal
             </LinkButton>
-            <LinkButton href="#contacto" variant="primary" className="w-full" onClick={() => setOpen(false)}>
+            <LinkButton href="/admisiones" variant="primary" className="w-full">
               Inscribirme
             </LinkButton>
           </div>

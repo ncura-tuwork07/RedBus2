@@ -1,5 +1,7 @@
 "use client";
 
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import { genericMessage } from "@/lib/whatsapp-templates";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
@@ -119,7 +121,12 @@ export function AlumnosTable({
                     </div>
                   </div>
                 </Td>
-                <Td>{s.phone ?? "—"}</Td>
+                <Td>
+                  <div className="flex items-center gap-2">
+                    <span>{s.phone ?? "—"}</span>
+                    <WhatsAppButton phone={s.phone} text={genericMessage(s.user.name)} label={`Escribir por WhatsApp a ${s.user.name}`} />
+                  </div>
+                </Td>
                 <Td>
                   <div className="flex flex-wrap gap-1">
                     {visibleClassrooms.map((e) => (

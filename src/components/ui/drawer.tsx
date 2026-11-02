@@ -8,12 +8,14 @@ export function Drawer({
   onClose,
   title,
   subtitle,
+  wide = false,
   children,
 }: {
   open: boolean;
   onClose: () => void;
   title: string;
   subtitle?: string;
+  wide?: boolean;
   children: React.ReactNode;
 }) {
   const titleId = useId();
@@ -50,7 +52,7 @@ export function Drawer({
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className="absolute right-0 top-0 z-50 flex h-full w-full max-w-[400px] flex-col overflow-y-auto bg-white shadow-lg focus:outline-none"
+        className={`absolute right-0 top-0 z-50 flex h-full w-full flex-col overflow-y-auto bg-white shadow-lg focus:outline-none ${wide ? "max-w-[560px]" : "max-w-[400px]"}`}
       >
         <div className="sticky top-0 z-10 flex items-start justify-between border-b border-neutral-200 bg-white px-6 py-4">
           <div>

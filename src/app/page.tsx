@@ -140,6 +140,9 @@ export default async function Home() {
                 {BRAND.city}.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <LinkButton href="/admisiones" variant="primary" size="lg">
+                  Inscribirme 2027
+                </LinkButton>
                 <LinkButton href={whatsappLink()} target="_blank" rel="noopener noreferrer" variant="white" size="lg">
                   <MessageCircle className="h-5 w-5" aria-hidden="true" />
                   WhatsApp {WHATSAPP.display}

@@ -33,8 +33,16 @@ enum SubmissionStatus {
 enum LeadStatus {
   NUEVO
   CONTACTADO
+  VACANTE_RESERVADA
   INSCRIPTO
   DESCARTADO
+}
+
+// De dónde viene el pedido: consulta suelta de la landing o formulario de admisiones (/admisiones).
+enum LeadKind {
+  CONSULTA
+  INSCRIPCION
+  REINSCRIPCION
 }
 
 // Un usuario del sistema. Puede tener más de un rol (ej. una dueña que también da clases).
@@ -325,6 +333,9 @@ model Lead {
   message   String?
   status    LeadStatus @default(NUEVO)
   notes     String?    // notas internas de admisiones (seguimiento de contacto)
+  kind      LeadKind   @default(CONSULTA)
+  details   Json?      // formulario completo de /admisiones: alumno, responsable, cursada, salud, autorizaciones
+  consentAt DateTime?  // cuándo aceptó el tratamiento de datos (Ley 25.326)
   createdAt DateTime   @default(now())
 
   @@map("leads")

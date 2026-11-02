@@ -7,3 +7,11 @@ export function normalizePhone(raw: string): string {
   if (digits.startsWith("9")) return `54${digits}`;
   return `549${digits}`;
 }
+
+// enlace para abrir un chat de WhatsApp con ese número (con texto opcional ya escrito).
+// Devuelve null si el número no alcanza para armar un chat.
+export function whatsappChatUrl(raw: string, text?: string): string | null {
+  const digits = normalizePhone(raw);
+  if (digits.length < 12) return null;
+  return `https://wa.me/${digits}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
+}

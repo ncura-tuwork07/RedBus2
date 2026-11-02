@@ -20,6 +20,8 @@ const publicPaths = ["/", "/login", "/recuperar", "/olvide", "/restablecer"];
 
 export default auth((req) => {
   const { pathname } = req.nextUrl;
+  // el formulario de admisiones es público y se comparte por link: también se abre con una sesión iniciada
+  if (pathname === "/admisiones" || pathname.startsWith("/admisiones/")) return NextResponse.next();
   const user = req.auth?.user;
   // sesiones firmadas antes del cambio a roles múltiples no traen `roles` (array) —
   // tratarlas como no autenticadas en vez de romper, para forzar un nuevo login.

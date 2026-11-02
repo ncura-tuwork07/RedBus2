@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { AppShell } from "@/components/app-shell";
 import { LeadsTable } from "./leads-table";
+import { ShareLinks } from "./share-links";
 
 export default async function AdmisionesPage() {
   const session = await auth();
@@ -12,6 +13,7 @@ export default async function AdmisionesPage() {
 
   return (
     <AppShell roles={session!.user.roles} name={session!.user.name} title="Admisiones">
+      <ShareLinks />
       <LeadsTable initialLeads={leads} />
     </AppShell>
   );
